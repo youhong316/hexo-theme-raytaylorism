@@ -1,41 +1,26 @@
-<article class="<%= item.layout %>">
-    <div class="article-title article-title-big">
-        <%- partial('post/title') %>
-    </div>
-
-    <div class="date-row <% if (extra) { %> hide"<% } %>">
-        <time datetime="<%= item.date.toDate().toISOString() %>"><%= item.date.format(config.date_format) %></time>
-    </div>
-
-    <div class="toc-wrap">
-        <div class="toc-title">目录</div>
-        <%- toc(item.content) %>
-    </div>
-
-    <div class="entry">
-        <%- item.content %>
-    </div>
-    
-    <footer <% if (index) { %> class="end-sep"<% } %>>
-        <% if (index){ %>
-            <% if (item.excerpt && showContent){ %>
-                <div class="alignleft">
-                    <a href="<%- config.root %><%- item.path %>#more" class="more-link"><%= theme.excerpt_link %></a>
-                </div>
+<%- partial('pagenav', {nav_head: __('current_page') + __('page_name.categories'), partial_path: 'post/category', archive_html: null}) %>
+<article>
+    <div class="card">
+        <div class="card-content">
+            <% if (item.photos && item.photos.length) { %>
+                <%- partial('post/gallery') %>
             <% } %>
-            <% if (item.comment && config.disqus_shortname){ %>
-                <div class="alignright">
-                  <a href="<%- item.permalink %>#disqus_thread" class="comment-link">Comments</a>
-              </div>
-            <% } %>
-        <% } else { %>
-            <%- partial('post/category') %>
+
+            <div class="article-title">
+                <%- partial('post/title') %>
+            </div>
+            <%- partial('post/time') %>
+            <%- partial('post/readtimes') %>
             <%- partial('post/tag') %>
-        <% } %>
-        <div class="clearfix"></div>
-    </footer>
+            <%- partial('post/tablecontents') %>
+
+            <div class="entry <%= theme.color.link %>-link-context">
+                <%- item.content %>
+                <%- partial('post/prevnext') %>
+            </div>
+			
+        </div>
+    </div>
 </article>
 
-<% if (!extra) { %>
 <%- partial('plugin/comment') %>
-<% } %>

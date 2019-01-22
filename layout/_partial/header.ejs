@@ -1,25 +1,24 @@
-<div class="navbar inverse-navbar">
-    <div class="navbar-inner">
-        <div class="container-center">
-            <a href="/index.html" class="menu-trigger" data-meteocon="M">
-                <i class="icon-reorder"></i>
-            </a>
-            <div class="nav-collapse navbar-responsive-collapse collapse">
-                <nav id="menu">
-                    <ul class="nav">
-                        <li><a class="brand" id="blog-title" href="/index.html"><%= config.title %></a></li>
-                    </ul>
-                    <div class="pull-right nav" id="nav-button-group">
-                        <% for (var i in theme.menu){ %>
-                            <a href="<%- theme.menu[i] %>" class="<%- theme.menu_class[i] %> btn btn-primary btn-large">
-                                <i class="<%- theme.menu_icon[i] %> icon-white"></i>
-                                <%= i %>
-                            </a>
-                        <% } %>
-                    </div>
-                </nav>
-                <%- partial('side_menu') %>
-            </div>
+<nav class="<%= theme.color.header %>">
+    <div class="nav-wrapper">
+        <a href="#" data-activates="main-menu" class="button-collapse">
+            <i class="fa fa-navicon"></i>
+        </a>
+        <div class="">
+            <a href="/" class="brand-logo hide-on-med-and-down"><%= config.title %></a>
+            <ul class="right hide-on-med-and-down">
+                <% for (var i in theme.menu){ %>
+                    <li>
+                        <a class="<%= theme.menu[i].class %> <%= theme.menu[i].category ? 'category-menu' : '' %>" href="<%= theme.menu[i].link %>" <% if (theme.menu[i].category) { %>data-activates="category-menu" <% } %>>
+                            <i class="fa fa-<%= theme.menu[i].icon %> "></i>
+                            <% var menuTextKey = 'menu.' + theme.menu[i].id; %>
+                            <%= __(menuTextKey) %>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+            <%- partial('side_nav') %>
         </div>
     </div>
-</div>
+</nav>
+
+<%- partial('search') %>

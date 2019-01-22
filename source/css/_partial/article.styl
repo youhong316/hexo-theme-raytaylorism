@@ -1,19 +1,23 @@
+.simple-article
+    margin-bottom 30px
+
 article
-    font-size normal-font-size
+    .entry
+        margin-top 20px
 
     .article-title h1
-        color color-title
+        font-family "微软雅黑", "sans-serif", "Helvetica Neue"
         font-size 2em
         font-weight bold
         line-height 1.4
-        margin 0
-        padding 20px 0
+        margin-top 0
+        margin-bottom 10px
+        color color-entry-subtitle
 
-        a
-            color color-title
-
-        a:hover
-            color color-title-hover
+    a:not(.chip)
+        color color-a
+        &:hover
+            color color-a-hover
 
     .simple-article-title h1
         font-size simple-title-font-size
@@ -22,32 +26,13 @@ article
     .tags-row
         margin-top 10px
 
-        a
-            margin 2px 2px
-
-    /* simple_article CSS start */
-    .date-row
-        color color-font
-        margin 10px 0
-        font-size normal-font-size
-
-    /* simple_article CSS end */                
-    
-    .prev, .next
-        position absolute
-        top 0
-        width 50%
-        height 100%
-        cursor pointer
-        &:before
-            position absolute
-            font 24px/1 font-icon
-            text-align center
-            width 24px
-            text-shadow 0 0 15px rgba(0,0,0,0.5)
-            color #fff
-            margin-top -12px
-            top 50%
+    .article-tag
+        display inline-block
+        height 32px
+        line-height 32px
+        padding 0 12px
+        border-radius 16px
+        color white
 
     header
         border-radius 0
@@ -66,12 +51,31 @@ article
         &:hover
             color color-link
 
-    .entry
-        // text-align justify
-        line-height 1.6
+    .card-content .entry
+        font-size 16px
+        line-height 1.7
+        @media (max-width: 480px)
+            line-height 1.5em
+
+        p
+            margin-top 0
+            margin-bottom 1em
+            text-align justify
+            text-justify inter-ideograph
+            word-break initial
+            word-break break-word
+
+            &:last-child
+                margin-bottom 0
+
+        ul, ol
+            margin-bottom 1em
+            ul, ol
+                margin-bottom 0
 
         h1, h2, h3, h4, h5, h6
-            margin 0.6em 0
+            margin-top 0
+            margin-bottom 0.5em
 
         h1
             font-size 1.6em
@@ -84,14 +88,6 @@ article
         h3, h4, h5, h6
             font-size 1.2em
             color color-entry-subtitle
-
-        blockquote
-            margin 0 -30px 20px
-            padding 15px 20px 1px 40px
-            font-style italic
-            background #ccc
-            background rgba(0, 0, 0, 0.06)
-            color #222
 
           &.nstyle
             border-radius 0
